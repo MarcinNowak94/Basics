@@ -2,6 +2,8 @@ package Basics;
 
 //Import tell Java Virtual Machine where to look for definition - substitute / for . and You have directory
 //Define scope as narrow as You can in order to avoid Class name collisions
+import java.math.BigInteger;
+import java.util.Locale;
 import java.util.Scanner;       //Basic input-output
 import javax.swing.JOptionPane; //Windows and dialog-boxes
 
@@ -72,6 +74,14 @@ public class Basics {
         finally {
             System.out.println(real+"/"+0+"="+result+" (had to handle exception though)");
         }
+
+        /**For really big numbers You have to use biginteger Class. As Java has no operator overload
+         * you have to use member functions provided by class to operate on values
+        */
+        BigInteger bigint1= new BigInteger("102030405060708090");
+        BigInteger bigint2= new BigInteger("010203040506070809");
+
+        System.out.println(bigint1.add(bigint2));
     }
     static void Windows(){
         //*********************************************************
@@ -82,7 +92,7 @@ public class Basics {
         //some types of windows are defined as text constants which you can use to control behavior (see WARNING_MESSAGE)
         JOptionPane.showMessageDialog(null,
                 "<html>This message will be displayed in HTML.<br><i><b>Told ya!</i></b></br><html>",
-                "Warning",
+                "This is the title",
                 JOptionPane.WARNING_MESSAGE);
 
         String text_from_popup;
@@ -96,11 +106,42 @@ public class Basics {
                 "Since we converted text to double using target class method" +
                         "\nit is now a real number, look:"+real+"*2="+(real*2)
         );
+    }
+    static void Comparators(){
+        String text1=new String("Some string");
+        String text2=new String("Some string");
+        String result="String literals are objects too!".toUpperCase(Locale.ROOT);
+
+        //Normally libraries provide: == and .compareTo() members
+        if (text1==text2)
+            result="identical";
+        else
+            result="different"; //because comaprator checks addresses
+        System.out.println("Given strings are "+result+". Because comaprator checks addresses." +
+                "\nNow let's compare if they are equal:");
+
+        if (text1.equals(text2))
+            result="equal";
+        else
+            result="not equal"; //this time we are checking values
+        System.out.println("Given strings are clearly "+result);
+
+        String text3=text1;
+        if (text1==text3)
+            result="equal";
+        else
+            result="not equal"; //this time we are checking values
+        System.out.println("Now check this out, we have done shallow copy text3=text1 and:" +
+                "\ntext1==text3: "+result);
 
     }
 
-    public static void main(String[] args) {
-        //Types_and_display();
+    static void Class1(){
+        Types_and_display();
         Windows();
+        Comparators();
+    }
+    public static void main(String[] args) {
+        Class1();
     }
 }
