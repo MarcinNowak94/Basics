@@ -6,6 +6,12 @@ import java.math.BigInteger;
 import java.util.Locale;
 import java.util.Scanner;       //Basic input-output
 import javax.swing.JOptionPane; //Windows and dialog-boxes
+import java.util.HashMap;
+import java.util.Map;
+
+
+import static java.lang.Boolean.FALSE;
+import static java.lang.Boolean.TRUE;
 
 //Work with IntelliJ offline: https://www.jetbrains.com/help/idea/working-offline.html
 
@@ -141,7 +147,69 @@ public class Basics {
         Windows();
         Comparators();
     }
+    static void Class2(){
+        System.out.println("On 2nd class we have done assignment.");
+    }
+    static void Class3(){
+        //Using implicit constructor
+        ExampleClass Example = new ExampleClass();
+        System.out.println(Example.name+" "+Example.getAge()+" "+Example.getHeight());
+
+        Example.setAge(18);
+        Example.setHeight(169);
+        Example.name="Janusz";
+        System.out.println("After assigning values:\n"+
+                Example.name+" "+Example.getAge()+" "+Example.getHeight());
+        /*this will display ID of object [could it be memory address ?]*/
+        System.out.println(Example);
+
+
+    }
+    static void Bonus(){
+        double a=1;
+        a=a/0;
+        System.out.println(a);
+
+
+        int x, y, z1,z2;
+        x = 1;
+        y = 2;
+        z1 = x+++ ++y;
+        z2 = ++x+y++;
+        System.out.println("Z1="+z1+"\nZ2="+z2);
+
+        class Mapy {
+            public Mapy() {
+                Map children = new HashMap();
+            children.put("Ian",15);
+            children.put("Luke",18);
+            children.put("David",16);
+            children.put("Karen",19);
+
+                display(children);
+            }
+
+            public void display(Map offspring) {
+                System.out.print(offspring);
+            }
+        }
+        new Mapy();
+
+
+        Boolean b1=FALSE;
+        Boolean b4=Boolean.FALSE;
+        boolean b2=false;
+        System.out.println("\nb1="+b1+"\nb2="+b2+"\nb4="+b4);
+
+    }
+
+
+
+
     public static void main(String[] args) {
         Class1();
+        Class2();
+        Class3();
+        Bonus();
     }
 }
